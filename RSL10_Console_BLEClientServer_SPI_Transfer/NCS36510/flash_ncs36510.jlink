@@ -1,0 +1,34 @@
+monitor speed 100
+monitor device Cortex-M3
+monitor flash download = 1
+tbreak *0x0000020c+4
+continue
+monitor long 0xE000E180=0x1F
+monitor long 0xE000E280=0x1F
+monitor long 0xE000E004=0x0A000000
+monitor writeu32 0x40017004=0
+monitor flash download=1
+monitor writeu32 0x40017010=0xBB781AE9
+monitor sleep 300
+monitor writeu32 0x40017014=0xB56D9099
+monitor sleep 300
+monitor writeu32 0x4001700C=0x00002000
+monitor writeu32 0x40017008=0x02
+monitor sleep 300
+monitor flash download=1
+monitor writeu32 0x40017010=0xBB781AE9
+monitor sleep 300
+monitor long 0x40017010
+monitor writeu32 0x40017014=0xB56D9099
+monitor sleep 300
+monitor loadbin NCS36510\fib.bin,0x2000
+monitor writeu32 0x40017010=0xBB781AE9
+monitor sleep 300
+monitor writeu32 0x40017018=0xB56D9099
+monitor sleep 300
+monitor writeu32 0x4001700C=0x00102000
+monitor writeu32 0x40017008=0x02
+monitor sleep 300
+monitor writeu32 0x40017010=0xBB781AE9
+monitor sleep 300
+monitor writeu32 0x40017018=0xB56D9099
